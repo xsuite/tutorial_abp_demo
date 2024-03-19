@@ -228,9 +228,6 @@ def change_beta15(collider, betx_ip1_target, bety_ip1_target,
             opt.solve()
             optimizers[bn]['ir8'] = opt
 
-    opt = lm.match_orbit_knobs_ip2_ip8(collider)
-    optimizers['orbit_knobs'] = opt
-
     # Rematch tunes and chromaticities
     print('Rematching chromaticities')
     for ll in collider.line_names:
