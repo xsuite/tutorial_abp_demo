@@ -29,10 +29,8 @@ def change_beta15(collider, betx_ip1_target, bety_ip1_target,
 
     optimizers.update({'b1':{}, 'b2':{}})
 
-    t_match_irs = {}
     for bn in ['b1', 'b2']:
 
-        tt_1 = time.time()
         line_name = f'lhc{bn}'
 
         muxip1_l = collider.varval[f'muxip1{bn}_l']
@@ -230,12 +228,7 @@ def change_beta15(collider, betx_ip1_target, bety_ip1_target,
             opt.solve()
             optimizers[bn]['ir8'] = opt
 
-        tt_2 = time.time()
-        t_match_irs[bn] = tt_2 - tt_1
-
-    t3 = time.time()
     opt = lm.match_orbit_knobs_ip2_ip8(collider)
-    t4 = time.time()
     optimizers['orbit_knobs'] = opt
 
     # Rematch tunes and chromaticities
@@ -255,3 +248,5 @@ def change_beta15(collider, betx_ip1_target, bety_ip1_target,
                 xt.Target('qy', tw0[ll].qy, tol=1e-6),
                 xt.Target('dqx', tw0[ll].dqx, tol=1e-4),
                 xt.Target('dqy', tw0[ll].dqy, tol=1e-4)])
+
+    return optimizers
