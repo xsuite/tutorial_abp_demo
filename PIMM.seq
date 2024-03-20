@@ -12,6 +12,8 @@ sf2: sextupole, l=0.2, k2:=ksf;
 se1: sextupole, l=0.2, k2:=kse1;
 se2: sextupole, l=0.2, k2:=kse2;
 
+cav: rfcavity, volt:=vrf, freq:=frf, lag=0;
+
 pimms:sequence,refer=centre,l=75.24;
               extr_septum: marker, at=0.0;
               qfa.1: qfa, at=2.3875;
@@ -37,6 +39,7 @@ pimms:sequence,refer=centre,l=75.24;
               mb, at=33.8075;
               qfa.4: qfa, at=35.0575;
               se1, at=35.0575 + 0.6;
+              cav, at=37.7;
               se2, at=40.0075 - 0.6;
               qfa.5: qfa, at=40.0075;
               mb, at=41.4325;
